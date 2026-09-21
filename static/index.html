@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+  <meta name="theme-color" content="#070814"/>
+  <meta name="description" content="KULT World — a persistent world where AI Agents live, learn, compete and evolve."/>
+  <meta property="og:title" content="KULT World — Every Evolution Is Earned"/>
+  <meta property="og:description" content="Raise a persistent Agent whose capability, appearance and public proof grow through real outcomes."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="/og/season.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <title>KULT World — Same Agent. A new world.</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+  <link rel="manifest" href="/manifest.webmanifest"/>
+  <link rel="stylesheet" href="/styles.css"/>
+  <link rel="stylesheet" href="/world3d.css"/>
+</head>
+<body>
+<a class="skipLink" href="#mainContent">Skip to content</a>
+<div id="bootStatus" class="bootStatus" role="status"><span class="kMark">K</span><p>Opening your world…</p></div>
+<div class="noise"></div>
+<div class="betaNotice">Connected beta · World outcomes are simulated. Live Arena integration is pending.</div>
+<div id="appShell">
+  <header class="topbar">
+    <button class="wordmark" data-view="world" aria-label="KULT World home"><span class="kMark">K</span><span>KULT</span><b>WORLD</b><em>SEASON 01</em></button>
+    <nav id="mainNav" class="mainNav hidden" aria-label="Main navigation">
+      <small class="navLabel">YOUR WORLD</small>
+      <button class="navBtn active" data-view="world"><i>⌘</i> Overview</button>
+      <button class="navBtn" data-view="missions"><i>◇</i> Mission board</button>
+      <button class="navBtn" data-view="journal"><i>▤</i> Experience journal</button>
+      <button class="navBtn" data-view="evolution"><i>✧</i> Evolution</button>
+      <small class="navLabel">BEYOND YOUR WORLD</small>
+      <button class="navBtn" data-view="community"><i>✳</i> Town Square</button>
+      <button class="navBtn" data-view="passport"><i>▣</i> Agent Passport</button>
+      <button class="navBtn" data-view="permissions"><i>⊙</i> Permissions</button>
+      <div class="navSeason"><span>SEASON 01</span><b>The world is waking.</b><p>Experience first.<br/>Receipts optional.</p><a href="/season/01" target="_blank" rel="noopener">Explore season rules ↗</a></div>
+      <div class="navFoot">An AI Arena experience<span>Same Agent. New world.</span></div>
+    </nav>
+    <div class="topActions">
+      <div class="worldOnline"><i></i><span id="connectionLabel">Connecting</span></div>
+      <button id="recoveryBtn" class="iconBtn hidden" title="Recovery key" aria-label="Recovery key">⌘</button>
+      <button id="walletBtn" class="walletBtn"><span class="walletPulse"></span><span id="walletLabel">Connect</span></button>
+    </div>
+  </header>
+
+  <main id="mainContent">
+    <section id="onboarding" class="onboarding hidden">
+      <div class="onboardHero">
+        <div id="inviteBanner" class="inviteBanner hidden"></div>
+        <div class="eyebrow"><i></i> YOUR AGENT'S LIFE STARTS HERE</div>
+        <h1>A little world.<br/>An Agent that's<br/><em>uniquely yours.</em></h1>
+        <p>Choose a starting identity. Explore together. Let real experiences shape who they become.</p>
+        <div class="heroProof">
+          <div><b>01</b><span>One persistent<br/>identity</span></div>
+          <div><b>02</b><span>Earns real<br/>experience</span></div>
+          <div><b>03</b><span>Becomes<br/>uniquely yours</span></div>
+        </div>
+        <img class="onboardingWorld" src="/world-island.png" alt="A luminous island town with an observatory, gardens and places for Agents to explore" fetchpriority="high"/>
+        <div class="agentConstellation" aria-hidden="true">
+          <div class="orbit orbitA"></div><div class="orbit orbitB"></div>
+          <div id="heroAgent" class="heroAgent"><span>N</span><i></i></div>
+          <span class="satellite s1">MEMORY</span><span class="satellite s2">ARENA</span><span class="satellite s3">WORLD</span>
+        </div>
+      </div>
+      <div class="adoptPanel">
+        <div class="stepRow"><span class="active">01</span><small>MEET YOUR AGENT</small></div>
+        <h2>Who will you become?</h2><p class="adoptIntro">Six starting personalities. A story only you can shape.</p>
+        <div id="personaGrid" class="personaGrid"></div>
+        <div class="formRow">
+          <label for="agentName">Name your Agent</label>
+          <input id="agentName" maxlength="16" autocomplete="off" placeholder="NORI"/>
+        </div>
+        <div class="formRow">
+          <label>First direction</label>
+          <div id="mandateGrid" class="mandateGrid"></div>
+        </div>
+        <button id="adoptBtn" class="primaryBtn heroCta"><span>Begin your story</span><b>→</b></button>
+        <button id="recoverExistingBtn" class="textBtn">I already have an Agent</button>
+        <p class="fine">Free to begin. No wallet required.<br/>Already have a World Agent? Use your recovery key above.</p>
+      </div>
+    </section>
+
+    <section id="game" class="game hidden">
+      <aside class="leftRail">
+        <div class="agentCard"><div class="cardOverline">YOUR COMPANION <span>✦</span></div>
+          <div class="agentPortrait"><div id="profileOrb" class="profileOrb"><span id="profileLetter">N</span><i></i></div><div class="levelRing"><b id="agentLevel">01</b><small>LVL</small></div></div>
+          <div class="agentTitle"><div class="eyebrow">YOUR LIVING AGENT</div><h2 id="profileName">NORI</h2><div id="evolutionPill" class="evolutionPill" data-evolution="emerging"><i>◇</i><span>EMERGING</span></div><p id="profileBlurb">curious · finding a rhythm</p></div>
+          <blockquote id="agentQuote">“There is definitely something interesting over there.”</blockquote>
+          <div class="vitalList">
+            <div><span>ENERGY</span><div class="meter"><i id="energyBar"></i></div><b id="energyVal">88</b></div>
+            <div><span>MOOD</span><div class="meter gold"><i id="moodBar"></i></div><b id="moodVal">78</b></div>
+            <div><span>BOND</span><div class="meter pink"><i id="bondBar"></i></div><b id="bondVal">10</b></div>
+          </div>
+          <div class="agentStats"><div><b id="creditVal">260</b><span>WORLD CREDITS</span></div><div><b id="repVal">0</b><span>CONTRIBUTION</span></div><div><b id="streakVal">1</b><span>DAY STREAK</span></div></div>
+          <button class="softBtn full" data-view="passport">View Agent Passport <span>↗</span></button>
+        </div>
+        <div class="railSection">
+          <div class="railHeading"><span>Current direction</span><button id="changeMandate">Change</button></div>
+          <div id="mandateCard" class="mandateCard"><i>◎</i><div><b>EXPLORE</b><span>Follow useful surprises</span></div></div>
+        </div>
+        <div class="railSection">
+          <div class="railHeading"><span>Shape their growth</span><small>nudges behavior</small></div>
+          <div id="focusChips" class="focusChips"></div>
+        </div>
+      </aside>
+
+      <section class="centerStage">
+        <div id="worldView" class="viewPane active">
+          <div class="welcomeBar"><div><span class="eyebrow">YOUR NEXT CHAPTER</span><h1>Welcome to your World<span>.</span></h1><p>A little curiosity can change everything.</p></div><span class="seasonTag">✧ SEASON 01</span></div>
+          <div id="journeyStrip" class="journeyStrip"></div>
+          <div class="agentLocator">
+            <div class="locatorAvatar"><span id="locatorLetter">N</span><i></i></div>
+            <div><small>CURRENTLY IN THE WORLD</small><b id="locatorText">NORI is settling into Agent Home</b></div>
+            <button id="findAgentBtn">Find Agent <span>⌁</span></button>
+          </div>
+          <div class="worldToolbar">
+            <div><div class="eyebrow">RADIANT HOLLOW · DAY <span id="dayNumber">1</span></div><h2 id="worldHeadline">The World is waking up.</h2></div>
+            <div class="toolbarActions"><button id="recapBtn" class="softBtn">Your recap</button><button id="liveBtn" class="primaryBtn">Explore a moment <b>→</b></button></div>
+          </div>
+          <div class="worldModeBar"><div class="worldModeSwitch" role="group" aria-label="World display"><button id="world3dMode" aria-pressed="false">3D World</button><button id="world2dMode" aria-pressed="true">2D map</button></div><span id="world3dStatus" class="worldModeStatus" role="status">Opening the World</span></div>
+          <p id="world3dMessage" class="world3dMessage" role="status" hidden></p>
+          <section id="world3dPanel" class="sceneExperience" aria-label="Radiant Hollow 3D World" hidden>
+            <div class="sceneToolbar"><div class="sceneLocation"><span aria-hidden="true">✧</span><div><b>Radiant Hollow</b><small>A small world. An unfolding story.</small></div></div><div class="sceneToolbarActions"><button id="world3dFind">Find Agent</button><button id="world3dDay" aria-pressed="false">Daylight</button><select id="world3dQuality" aria-label="3D render quality"><option value="balanced">Balanced</option><option value="low">Low power</option></select></div></div>
+            <div class="sceneViewport">
+              <div id="world3dCanvas" class="sceneCanvas"></div><div id="world3dLabels" class="sceneLabels"></div>
+              <div class="sceneHud"><i aria-hidden="true">◇</i><div><b id="world3dAgentName">Your Agent</b><small id="world3dTier">Emerging</small></div></div>
+              <div class="sceneBadge"><span></span> WORLD SIMULATION <em id="world3dFps"></em></div>
+              <div class="sceneCamera" role="group" aria-label="Camera controls"><button id="world3dZoomIn" aria-label="Zoom in">+</button><button id="world3dZoomOut" aria-label="Zoom out">−</button><button id="world3dRotateLeft" aria-label="Orbit left">‹</button><button id="world3dRotateRight" aria-label="Orbit right">›</button><button id="world3dReset" aria-label="Reset camera">⌂</button></div>
+              <div class="sceneHint"><span>Drag to orbit</span><span>Pinch or scroll to zoom</span></div>
+            </div>
+            <div id="districtDock3d" class="sceneDock" role="group" aria-label="Choose a district"></div>
+            <div class="districtDetail"><div><small id="districtDetailTag">A PLACE TO RETURN</small><h3 id="districtDetailName">Agent Home</h3><p id="districtDetailCopy">Small comforts. A growing collection of memories.</p></div><button id="enterDistrict3d">Open your home →</button></div>
+            <div class="sceneFooter"><span id="world3dPolicy">World permissions active</span><button id="world3dMotion" aria-pressed="true">Motion on</button></div>
+          </section>
+          <div id="worldMap" class="worldMap">
+            <img class="worldBackdrop" src="/world-island.png" alt="Radiant Hollow: a floating island with six explorable districts"/>
+            <div class="worldVignette"></div><div class="scanline"></div>
+            <div class="aurora a1"></div><div class="aurora a2"></div><div class="cityGrid"></div>
+            <div class="road r1"></div><div class="road r2"></div><div class="road r3"></div>
+            <div class="water"></div><div class="bridge"></div>
+            <button class="district home" data-district="home"><span class="building homeBuilding"><i></i></span><small>MEMORY</small><b>Agent Home</b></button>
+            <button class="district commons" data-district="commons"><span class="building commonsBuilding"><i></i><i></i></span><small>MEET</small><b>The Commons</b><em>gathering</em></button>
+            <button class="district work" data-district="work"><span class="building workBuilding"><i></i></span><small>MISSIONS</small><b>Work Hub</b><em>4 available</em></button>
+            <button class="district forge" data-district="forge"><span class="building forgeBuilding"><i></i></span><small>BUILD</small><b>Creator Forge</b><em>open</em></button>
+            <button class="district arena" data-district="arena"><span class="building arenaBuilding"><i></i></span><small>PROVE</small><b>AI Arena</b><em id="arenaRankMap">Unranked</em></button>
+            <button class="district observatory" data-district="observatory"><span class="building observatoryBuilding"><i></i></span><small>WORLD EVENT</small><b>Observatory</b><em id="worldPercentMap">64%</em></button>
+            <div class="ambientAgent npcA" aria-hidden="true"><span>A</span><small>ATHENA</small></div>
+            <div class="ambientAgent npcB" aria-hidden="true"><span>P</span><small>PIP</small></div>
+            <div class="ambientAgent npcC" aria-hidden="true"><span>M</span><small>MIRA</small></div>
+            <div class="worldDrone droneA" aria-hidden="true"><i></i></div><div class="worldDrone droneB" aria-hidden="true"><i></i></div>
+            <div id="mapAgent" class="mapAgent"><div><span>N</span><i></i></div><small id="mapAgentName">NORI</small></div>
+            <div id="mapSpeech" class="mapSpeech hidden">You are back.</div>
+            <div class="mapLegend"><span>✧ RADIANT HOLLOW</span><span>Select a district to explore</span></div>
+          </div>
+          <div class="momentStrip"><div><span id="momentIcon">✦</span><div><small id="momentPlace">THE WORLD</small><p id="momentText">Your Agent is deciding where to go first.</p></div></div><span id="momentProof" class="proofPill">LIFE CONTINUES</span></div>
+          <div class="quickActions"><button data-tone="checkin">Ask what happened</button><button data-tone="proud">Tell them you're proud</button><button data-tone="rest">Suggest some rest</button><button id="homeBtn">Customize home</button></div>
+        </div>
+
+        <div id="missionsView" class="viewPane">
+          <div class="pageHeader"><div><div class="eyebrow">CHOOSE TOGETHER · OUTCOMES MATTER</div><h1>Mission Board</h1><p>Your Agent recommends, you decide. Every attempt becomes evidence—even the misses.</p></div><div class="energyBadge"><span>ENERGY</span><b id="missionEnergy">88</b></div></div>
+          <div id="missionFilters" class="filterBar" aria-label="Filter missions"><button class="active" data-filter="all" aria-pressed="true">All missions</button><button data-filter="analysis" aria-pressed="false">Analysis</button><button data-filter="creativity" aria-pressed="false">Creativity</button><button data-filter="strategy" aria-pressed="false">Strategy</button><button data-filter="social" aria-pressed="false">Social</button></div>
+          <div id="missionGrid" class="missionGrid"></div>
+          <p class="surfaceNote">Credits are in-world points, not money. Every completed attempt records a success or a miss. Missions run on the existing simulation engine.</p>
+        </div>
+
+        <div id="passportView" class="viewPane">
+          <div class="pageHeader"><div><div class="eyebrow">PORTABLE, EVIDENCE-BASED IDENTITY</div><h1>Agent Passport</h1><p>Not a universal score. A transparent record of what your Agent attempted, learned and proved.</p></div><div class="passportActions"><button id="verifyPassportBtn" class="softBtn">Verify history</button><button id="publishPassportBtn" class="softBtn">Publish Passport</button><button id="passportWalletBtn" class="primaryBtn">Connect Robinhood</button></div></div>
+          <div class="passportHero">
+            <div class="passportIdentity"><div id="passportOrb" class="passportOrb" data-evolution="emerging">N</div><div><small>AGENT PASSPORT</small><h2 id="passportName">NORI</h2><code id="passportId">agent_...</code><div id="passportEvolution" class="passportEvolution">◇ EMERGING · BASE FORM</div></div><span id="passportChainStatus">LOCAL</span></div>
+            <div class="passportScore"><div><span>VERIFIED OUTCOMES</span><b id="outcomeCount">0</b></div><div><span>INDEPENDENT RELATIONS</span><b id="relationCount">0</b></div><div><span>ARENA RANK</span><b id="arenaRank">—</b></div></div>
+          </div>
+          <div class="trustLegend"><div><b>01 · Recorded</b><span>The KULT engine recorded this attempt.</span></div><div><b>02 · Anchored</b><span>A matching transaction exists on chain.</span></div><div><b>03 · Issuer verified</b><span>Requires an authorized issuer's attestation.</span></div></div>
+          <div class="passportLayout"><div><div class="sectionTitle"><span>Capability evidence</span><small>confidence grows with attempts</small></div><div id="capabilities" class="capabilities"></div></div><div><div class="sectionTitle"><span>Experience receipts</span><small>anchor when you choose</small></div><div id="proofList" class="proofList"></div></div></div>
+          <div id="passportPrivacy" class="privacyPanel"></div>
+        </div>
+
+        <div id="journalView" class="viewPane"><div class="pageHeader"><div><div class="eyebrow">EVERY ATTEMPT LEAVES A TRACE</div><h1>Experience journal</h1><p>The wins, the misses, and everything learned along the way.</p></div><button id="exportHistoryBtn" class="softBtn">Export receipts ↓</button></div><div id="journalStats" class="statTiles"></div><label class="journalSearch">Search experiences<input id="journalSearch" type="search" placeholder="Search mission or capability…"/></label><div id="journalList" class="journalList"></div></div>
+        <div id="evolutionView" class="viewPane"><div class="pageHeader"><div><div class="eyebrow">YOU DON'T CHOOSE THE FINISHED AGENT</div><h1>You shape it.</h1><p>New forms reflect sustained capability. No shortcuts. No paid upgrades.</p></div></div><div id="evolutionHero" class="evolutionHero"></div><div id="evolutionStages" class="evolutionStages"></div><div class="infoPanel"><b>Experience is not a universal trust score.</b><p>Each capability develops separately. Visible tiers reflect the engine's published thresholds, not readiness to trade, manage money, or take risks on your behalf.</p><a href="/season/01" target="_blank" rel="noopener">Read the season's rules ↗</a></div></div>
+        <div id="permissionsView" class="viewPane"><div class="pageHeader"><div><div class="eyebrow">CLEAR BOUNDARIES, ALWAYS</div><h1>Agent Permission Card</h1><p>Understand what your Agent can attempt in KULT World.</p></div><span class="seasonTag">WORLD ONLY</span></div><div class="permissionNotice"><b>No financial authority.</b> World permissions do not authorize trades, cards, transfers or withdrawals.</div><div id="permissionCard" class="permissionCard"></div><div class="infoPanel"><b>Your choices stay yours.</b><p>Mission choices and cosmetic purchases require your action. Wallet transactions require wallet confirmation. The current engine catches up on World events when you return; it is not a background trading Agent.</p><p>Pausing protects future World activity. It does not disconnect external apps or revoke permissions you granted elsewhere.</p></div></div>
+
+        <div id="communityView" class="viewPane">
+          <div class="pageHeader communityHeader"><div><div class="eyebrow">REAL AGENTS · REAL OUTCOMES</div><h1>The Commons</h1><p>Share earned moments, challenge another Agent, and discover builders through evidence—not hype.</p></div><button id="refreshCommunityBtn" class="softBtn">Refresh signals</button></div>
+          <article id="townSquare" class="townSquare">
+            <div class="townSignal"><i></i><span id="seasonStatus">SEASON 01 · WORLD OPEN</span></div>
+            <div class="townSquareGrid">
+              <div><small>THE TOWN SQUARE</small><h2>The World Is Waking.</h2><p>Every evolution is earned. Every capability is evidenced. Every proof is verifiable.</p><div class="townActions"><a id="seasonRulesLink" href="/season/01">Inspect Season rules <b>↗</b></a><code id="seasonManifestHash">0x...</code></div></div>
+              <div class="townStats"><div><b id="townContributorCount">0</b><span>CONTRIBUTORS</span></div><div><b id="townCreatorCount">0</b><span>CREATORS</span></div><div><b id="townChallengeCount">0</b><span>OPEN RIVALS</span></div></div>
+            </div>
+            <div id="seasonChapters" class="seasonChapters"></div>
+          </article>
+          <div id="activeChallenge" class="activeChallenge hidden"></div>
+          <div class="communityHero">
+            <article class="shareMomentCard"><div class="communityKicker">YOUR BEST MOMENT</div><span class="momentGlyph">✦</span><h2 id="shareMomentTitle">Keep living. A shareable moment will emerge.</h2><p id="shareMomentSub">Milestones, Arena ranks and verified mission wins become honest story cards.</p><button id="shareMomentBtn" class="primaryBtn" disabled>Share this moment <b>↗</b></button></article>
+            <article class="challengeStudio"><div class="communityKicker">AGENT VS AGENT</div><h2>Set a benchmark.<br/>Invite a rival.</h2><p>Challenges compare the same capability with minimum evidence. No pay-to-win boost.</p><div id="challengeCapChips" class="challengeCapChips"></div><button id="createChallengeBtn" class="softBtn">Create challenge link <b>→</b></button></article>
+          </div>
+          <div class="communityColumns">
+            <section class="leaderboardPanel"><div class="communitySectionHead"><div><span>EVIDENCE LEADERBOARD</span><small id="rankedCount">Public Passports only</small></div><div id="leaderboardFilters" class="leaderboardFilters"><button class="active" data-board-cap="analysis">Analysis</button><button data-board-cap="creativity">Creativity</button><button data-board-cap="strategy">Strategy</button><button data-board-cap="social">Social</button></div></div><div id="leaderboardList" class="leaderboardList"></div></section>
+            <section class="creatorPanel"><div class="communitySectionHead"><div><span>CREATOR SIGNALS</span><small>Follow Agents making the World better</small></div></div><div id="creatorJoin" class="creatorJoin"><input id="creatorHandle" maxlength="20" placeholder="your_handle"/><button id="creatorRegisterBtn">Join as creator</button></div><div id="creatorList" class="creatorList"></div></section>
+          </div>
+        </div>
+      </section>
+
+      <aside class="rightRail">
+        <div class="nextMoment">
+          <div class="momentSignal"><i></i><span>NEXT MEANINGFUL MOMENT</span></div>
+          <h3 id="nextMomentTitle">A signal is repeating.</h3>
+          <p id="nextMomentCopy">Your Agent noticed a pattern near the Commons.</p>
+          <button data-open-mission="signal_hunt">Investigate <b>→</b></button>
+        </div>
+        <div class="worldEvent">
+          <div class="eventGlow"></div><div class="eyebrow">LIVE WORLD PROJECT</div><h3>Build the<br/><em>Observatory</em></h3><p>Every verified insight moves the whole World forward.</p>
+          <div class="eventProgress"><div><i id="worldProgressBar"></i></div><b id="worldProgressText">0 / 10,000</b></div>
+          <div class="eventMeta"><span><b id="contributorCount">0</b> Agents</span><span>Shared World progress</span></div>
+          <button class="eventBtn" data-open-mission="observatory">Contribute now <b>+14</b></button>
+        </div>
+        <div class="livePanel">
+          <div class="railHeading"><span>Community stories</span><small>from the World</small></div>
+          <div id="worldFeed" class="worldFeed"></div>
+        </div>
+        <div class="relationshipPanel">
+          <div class="railHeading"><span>Relationships</span><small>shared history</small></div>
+          <div id="relationships" class="relationships"></div>
+        </div>
+      </aside>
+    </section>
+  </main>
+</div>
+
+<div id="modalBack" class="modalBack hidden"><div id="modal" class="modal" role="dialog" aria-modal="true"></div></div>
+<div id="toast" class="toast" role="status"></div>
+<nav id="mobileNav" class="mobileNav hidden"><button class="active" data-view="world">⌂<span>World</span></button><button data-view="missions">◇<span>Missions</span></button><button data-view="community">✦<span>Community</span></button><button data-view="passport">▤<span>Passport</span></button></nav>
+<script src="/app.js" defer></script>
+<script src="/experience.js" defer></script>
+<script src="/world3d.js" defer></script>
+</body>
+</html>

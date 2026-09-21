@@ -1,7 +1,9 @@
-# Free-tier blueprint: no persistent disk, so world state in
-# /var/data/kult-world.json resets on every deploy, restart, and
-# wake-from-idle. See render.paid.yaml for the starter-plan config
-# that mounts a 1 GB disk and survives restarts.
+# Free-tier demo blueprint: boots without the registry contract.
+# No persistent disk, so world state in /var/data/kult-world.json resets
+# on every deploy, restart, and wake-from-idle. PUBLIC_ORIGIN defaults to
+# Render's RENDER_EXTERNAL_URL. For production, deploy the contract, set
+# KULT_REGISTRY_ADDRESS and KULT_SEASON_COMMIT_TX, and switch NODE_ENV to
+# production (see render.paid.yaml for the persistent-disk config).
 services:
   - type: web
     name: kult-world
@@ -10,15 +12,13 @@ services:
     healthCheckPath: /api/health
     envVars:
       - key: NODE_ENV
-        value: production
+        value: development
       - key: KULT_DATA_FILE
         value: /var/data/kult-world.json
       - key: KULT_SECURE_COOKIE
         value: "true"
-      - key: PUBLIC_ORIGIN
-        sync: false
       - key: ROBINHOOD_RPC_URL
-        sync: false
+        value: https://rpc.testnet.chain.robinhood.com/rpc
       - key: ROBINHOOD_BROWSER_RPC_URL
         value: https://rpc.testnet.chain.robinhood.com/rpc
       - key: KULT_REGISTRY_ADDRESS

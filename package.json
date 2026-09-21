@@ -1,0 +1,28 @@
+{
+  "name": "kult-world-threejs",
+  "version": "5.0.0-beta.1",
+  "private": true,
+  "description": "Three.js World frontend with connected KULT simulation backend",
+  "main": "server.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "NODE_ENV=development node server.js",
+    "test": "node --test",
+    "test:coverage": "node --test --experimental-test-coverage",
+    "test:contract": "forge test -vvv",
+    "demo:seed": "KULT_DEMO_SEED=yes node scripts/create-demo-world.js",
+    "test:browser": "node scripts/browser-qa.cjs",
+    "check": "node --check server.js && node --check engine.js && node --check growth.js && node --check season.js && node --check og.js && node --check chain.js && node --check store.js && node --check policy.js && node --check static/app.js && node --check static/experience.js && node --check sdk/index.js && node --check client/world-model.mjs && node --check client/world-renderer.mjs && node --check client/world-app.mjs && node --check client/preview-entry.mjs",
+    "build:3d": "node scripts/build-3d.cjs",
+    "test:dom": "node scripts/dom-qa.cjs",
+    "test:3d-browser": "node scripts/three-browser-qa.cjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12",
+    "jsdom": "26.1.0",
+    "three": "0.186.0"
+  }
+}

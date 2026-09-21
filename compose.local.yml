@@ -1,0 +1,15 @@
+services:
+  kult-world:
+    build: .
+    ports:
+      - "127.0.0.1:8060:8060"
+    environment:
+      NODE_ENV: development
+      PORT: "8060"
+      PUBLIC_ORIGIN: http://localhost:8060
+      KULT_SECURE_COOKIE: "false"
+      KULT_DATA_FILE: /var/data/kult-world.json
+    volumes:
+      - kult-world-local:/var/data
+volumes:
+  kult-world-local:

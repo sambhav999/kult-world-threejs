@@ -1,0 +1,10 @@
+data/*.json
+data/*.tmp
+data/*.corrupt-*
+coverage/
+cache/
+out/
+node_modules/
+*.zip
+*.log
+.env
